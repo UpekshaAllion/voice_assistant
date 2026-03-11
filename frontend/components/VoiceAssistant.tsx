@@ -150,7 +150,7 @@ export default function VoiceAssistant() {
 
   return (
     <div className="h-screen bg-gray-950 text-white flex flex-col items-center justify-center p-4">
-      <div className="w-full max-w-[80%] flex flex-col gap-6 h-full max-h-full">
+      <div className="w-full max-w-[1000px] flex flex-col gap-6 h-full max-h-full">
         {/* Header */}
         <div className="text-center">
           <h1 className="text-3xl font-bold text-indigo-400">🎙️ Voice AI Assistant</h1>
