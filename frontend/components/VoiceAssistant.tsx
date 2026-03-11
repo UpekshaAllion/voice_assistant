@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { sendMessage, clearSession } from "@/lib/api";
 import { SpeechRecognition, SpeechRecognitionConstructor } from "@/types/common";
+import ReactMarkdown from "react-markdown";
 
 declare global {
   interface Window {
@@ -148,16 +149,16 @@ export default function VoiceAssistant() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white flex flex-col items-center justify-center p-4">
-      <div className="w-full max-w-2xl flex flex-col gap-6">
+    <div className="h-screen bg-gray-950 text-white flex flex-col items-center justify-center p-4">
+      <div className="w-full max-w-[80%] flex flex-col gap-6 h-full max-h-full">
         {/* Header */}
         <div className="text-center">
           <h1 className="text-3xl font-bold text-indigo-400">🎙️ Voice AI Assistant</h1>
-          <p className="text-gray-400 text-sm mt-1">Powered by Gemini + Web Speech API</p>
+          <p className="text-gray-400 text-sm mt-1">Powered by llama-3.3-70b-versatile + Web Speech API</p>
         </div>
 
         {/* Chat Window */}
-        <div className="bg-gray-900 rounded-2xl p-4 h-80 overflow-y-auto flex flex-col gap-3 border border-gray-800">
+        <div className="bg-gray-900 rounded-2xl p-4 flex-1 min-h-0 overflow-y-auto flex flex-col gap-3 border border-gray-800">
           {messages.length === 0 && (
             <div className="text-center text-gray-500 my-auto">
               Press the mic button and start talking...
@@ -178,7 +179,13 @@ export default function VoiceAssistant() {
                 <span className="block text-xs opacity-60 mb-1">
                   {msg.role === "user" ? "You" : "AI"}
                 </span>
-                {msg.text}
+                {msg.role === "assistant" ? (
+                  <div className="prose prose-invert prose-sm max-w-none">
+                    <ReactMarkdown>{msg.text}</ReactMarkdown>
+                  </div>
+                ) : (
+                  msg.text
+                )}
               </div>
             </div>
           ))}

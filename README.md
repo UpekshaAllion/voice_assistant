@@ -2,6 +2,8 @@
 
 A full-stack AI-powered voice assistant that lets users speak a question, sends it to an LLM backend, and reads the response aloud using the browser's built-in speech synthesis.
 
+![alt text](image.png)
+
 ---
 
 ## Tools & Technologies
