@@ -96,6 +96,10 @@ User speaks into microphone
         ▼
 User hears the AI response
 ```
+```
+Browser Mic → Web Speech API (STT) → Next.js Frontend→ FastAPI Backend → Groq Cloud – LLaMA 3.3 70B → FastAPI Response → Next.js → Web Speech API (TTS) → Speaker
+```
+
 
 ---
 
